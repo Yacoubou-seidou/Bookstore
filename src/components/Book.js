@@ -8,6 +8,7 @@ const Book = ({ book }) => {
     <ul className="book">
       <li>{title}</li>
       <li>{author}</li>
+      <li><button type="button">delete</button></li>
     </ul>
   );
 };
