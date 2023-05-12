@@ -1,41 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addBook, getBooks, deleteBook } from './booksThunk';
 
 const initialState = {
-  books: [
-    {
-      id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
+  error: false,
 };
 
 const booksSlice = createSlice({
   name: 'book',
   initialState,
-  reducers: {
-    addBook: (state, { payload }) => {
-      state.books = [...state.books, payload];
+  extraReducers: {
+    [getBooks.fulfilled]: (state, action) => {
+      state.books = action.payload;
     },
-    deleteBook: (state, { payload }) => {
-      state.books = state.books.filter((book) => book.id !== payload);
+    [getBooks.rejected]: (state) => {
+      state.error = true;
+    },
+    [addBook.fulfilled]: (state, { payload }) => {
+      const {
+        title, author, category,
+      } = payload;
+      state.books[payload.item_id] = [{
+        title,
+        author,
+        category,
+      }];
+    },
+    [deleteBook.fulfilled]: (state, { payload }) => {
+      delete state.books[payload];
     },
   },
 });
-
-export const { addBook, deleteBook } = booksSlice.actions;
 
 export default booksSlice.reducer;
