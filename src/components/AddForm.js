@@ -1,7 +1,7 @@
 import { useState, React } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/booksSlice';
+import { addBook } from '../redux/books/booksThunk';
 
 const AddForm = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const AddForm = () => {
     if (title.trim() && author.trim()) {
       dispatch(
         addBook({
-          id: uuidv4(),
+          item_id: uuidv4(),
           title,
           author,
           category: '',
