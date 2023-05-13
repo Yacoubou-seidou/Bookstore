@@ -1,9 +1,10 @@
 import React from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
+import '../styles/navbar.css';
 
 const NavBar = () => (
-  <nav>
-    <h1>Bookstore</h1>
+  <nav className="navbar">
+    <h1>Bookstore CMS</h1>
     <ul className="links">
       <li>
         <a href="/">Books</a>
@@ -12,7 +13,7 @@ const NavBar = () => (
         <a href="/categories">Categories</a>
       </li>
     </ul>
-    <AiOutlineUser />
+    <AiOutlineUser className="user" />
   </nav>
 );
 

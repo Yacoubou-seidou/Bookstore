@@ -11,7 +11,7 @@ const ShowBook = () => {
     dispatch(getBooks());
   }, [dispatch]);
   return (
-    <>
+    <ul>
       {booksArray.map((book) => {
         const element = books[book][0];
         return (
@@ -23,7 +23,7 @@ const ShowBook = () => {
           />
         );
       })}
-    </>
+    </ul>
   );
 };
 
