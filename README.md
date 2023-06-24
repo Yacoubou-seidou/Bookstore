@@ -133,6 +133,7 @@ npm start
 
 - [ ] **[Add more pages]**
 - [ ] **[Add more css for styling]**
+- [ ] **[Fetch books from an api]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
